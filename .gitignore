@@ -1,0 +1,24 @@
+# OS
+.DS_Store
+
+# Extracted frames & recordings
+*/frames/
+*/motion/
+*/oval/
+*/intro/
+*/shots/
+Recordings/
+
+# Assets
+web-assets/
+
+# Project dirs with only generated content
+wgb_agency/
+
+# Images (intermediate artifacts)
+*/*/*.png
+*/*/*.jpg
+
+# Dependencies
+node_modules/
+

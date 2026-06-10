@@ -12,9 +12,6 @@ Recordings/
 # Assets
 web-assets/
 
-# Project dirs with only generated content
-wgb_agency/
-
 # Images (intermediate artifacts)
 */*/*.png
 */*/*.jpg

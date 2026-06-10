@@ -12,5 +12,5 @@ export default defineConfig({
     // Ensure a single React/Framer instance across the aliased source.
     dedupe: ["react", "react-dom", "framer-motion"],
   },
-  server: { port: 5180 },
+  server: { port: 4048 },
 });

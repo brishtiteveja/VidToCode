@@ -19,3 +19,6 @@ web-assets/
 # Dependencies
 node_modules/
 
+# Unignore wgb_agency project entirely
+!wgb_agency/
+!wgb_agency/**

@@ -66,5 +66,19 @@ export function staggerContainer(stagger = 0.08, delayChildren = 0): Variants {
 /** Alias kept for line-by-line text reveals. */
 export const staggerLines = staggerContainer;
 
+/**
+ * Masked rise — word slides up from below its own bounding box through an
+ * `overflow: hidden` parent. The Floema-style split-text reveal. Pair with
+ * `TextReveal effect="masked-rise" splitWords`.
+ */
+export const maskedRise: Variants = {
+  hidden: { y: "100%", opacity: 0 },
+  visible: {
+    y: "0%",
+    opacity: 1,
+    transition: { duration: durations.slow, ease: easeOutExpo },
+  },
+};
+
 /** Standard `whileInView` viewport config: fire once, when ~30% visible. */
 export const inViewOnce = { once: true, amount: 0.3 } as const;

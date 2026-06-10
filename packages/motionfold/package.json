@@ -41,7 +41,13 @@
   "peerDependencies": {
     "framer-motion": ">=11",
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "lenis": ">=1.1"
+  },
+  "peerDependenciesMeta": {
+    "lenis": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",

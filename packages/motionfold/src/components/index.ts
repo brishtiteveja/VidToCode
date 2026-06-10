@@ -9,3 +9,5 @@ export * from "./MagnifyCarousel";
 export * from "./VectorBuildIntro";
 export * from "./ExpandingHighlight";
 export * from "./IntroCurtain";
+export * from "./ParallaxField";
+export * from "./ParallaxSection";

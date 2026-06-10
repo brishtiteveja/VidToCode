@@ -7,7 +7,7 @@ import { useInViewOnce } from "../hooks/useInViewOnce";
 import { useReducedMotionFlag } from "../hooks/useReducedMotionFlag";
 import { motionTag, type MotionTag } from "../internal/motionTag";
 
-export type TextRevealEffect = "blur" | "clip" | "blur-clip" | "rise";
+export type TextRevealEffect = "blur" | "clip" | "blur-clip" | "rise" | "masked-rise";
 
 export interface TextRevealProps {
   /** Text to reveal. Provide a `string` to enable word splitting. */
@@ -44,6 +44,11 @@ function buildVariant(effect: TextRevealEffect, duration: number): Variants {
       return {
         hidden: { opacity: 0, y: "0.6em" },
         visible: { opacity: 1, y: 0, transition },
+      };
+    case "masked-rise":
+      return {
+        hidden: { y: "100%", opacity: 0 },
+        visible: { y: "0%", opacity: 1, transition },
       };
     case "blur-clip":
     default:
@@ -85,6 +90,7 @@ export function TextReveal({
 
   if (splitWords && typeof children === "string") {
     const words = children.split(/(\s+)/);
+    const isMasked = effect === "masked-rise";
     return (
       <Comp
         ref={ref}
@@ -94,10 +100,24 @@ export function TextReveal({
         initial={initialState}
         animate={animateState}
       >
-        {words.map((w, i) =>
-          /\s+/.test(w) ? (
-            <span key={i}>{w}</span>
-          ) : (
+        {words.map((w, i) => {
+          if (/\s+/.test(w)) return <span key={i}>{w}</span>;
+          if (isMasked) {
+            return (
+              <span
+                key={i}
+                style={{ display: "inline-block", overflow: "hidden", verticalAlign: "top" }}
+              >
+                <motion.span
+                  variants={variant}
+                  style={{ display: "inline-block", willChange: "transform" }}
+                >
+                  {w}
+                </motion.span>
+              </span>
+            );
+          }
+          return (
             <motion.span
               key={i}
               variants={variant}
@@ -105,8 +125,8 @@ export function TextReveal({
             >
               {w}
             </motion.span>
-          ),
-        )}
+          );
+        })}
       </Comp>
     );
   }

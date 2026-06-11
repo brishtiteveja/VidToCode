@@ -1,46 +1,52 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { thumbnails, ThumbnailData } from "../data/sections";
-import { thumbnailVariants } from "../lib/animations";
 
-interface ThumbnailItemProps {
-  data: ThumbnailData;
-  index: number;
-}
-
-function ThumbnailItem({ data, index }: ThumbnailItemProps) {
+function ThumbnailItem({ data, index, total }: { data: ThumbnailData; index: number; total: number }) {
   const { scrollY } = useScroll();
 
-  // Each layer moves at a different speed
   const layerSpeeds = [50, 100, 150, 200];
   const speed = layerSpeeds[data.layer];
+  const scrollOffsetY = useTransform(scrollY, [0, 1000], [0, -speed]);
+  const scrollOpacity = useTransform(scrollY, [0, 400, 800], [1, 0.7, 0]);
 
-  const y = useTransform(scrollY, [0, 1000], [0, -speed]);
-  const opacity = useTransform(scrollY, [0, 600, 900], [1, 0.6, 0]);
+  // Stagger evenly across the cycle so there's always a stream
+  const cycleDuration = 7;
+  const delay = (index / total) * cycleDuration;
 
   return (
     <motion.div
-      className="absolute will-change-transform"
       style={{
+        position: "absolute",
         left: `${data.x}%`,
         top: `${data.y}%`,
         width: data.width,
         height: data.height,
-        y,
-        opacity,
-        rotate: data.rotation,
+        y: scrollOffsetY,
+        opacity: scrollOpacity,
+        transformStyle: "preserve-3d" as const,
       }}
-      variants={thumbnailVariants}
-      initial="hidden"
-      animate="visible"
-      custom={0.8 + index * 0.06}
     >
       <div
-        className="w-full h-full rounded-lg shadow-lg"
+        className="funnel-fly"
         style={{
-          background: data.color,
-          boxShadow: "0 4px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04)",
+          width: "100%",
+          height: "100%",
+          animationDuration: `${cycleDuration}s`,
+          animationDelay: `${delay}s`,
+          transformStyle: "preserve-3d" as const,
         }}
-      />
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: 8,
+            background: data.color,
+            boxShadow: "0 4px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04)",
+            transform: `rotate(${data.rotation}deg)`,
+          }}
+        />
+      </div>
     </motion.div>
   );
 }
@@ -53,9 +59,18 @@ export default function FloatingThumbnails({ visible }: FloatingThumbnailsProps)
   if (!visible) return null;
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        overflow: "hidden",
+        pointerEvents: "none",
+        perspective: 1200,
+        perspectiveOrigin: "50% 50%",
+      }}
+    >
       {thumbnails.map((thumb, i) => (
-        <ThumbnailItem key={thumb.id} data={thumb} index={i} />
+        <ThumbnailItem key={thumb.id} data={thumb} index={i} total={thumbnails.length} />
       ))}
     </div>
   );

@@ -11,3 +11,6 @@ export * from "./ExpandingHighlight";
 export * from "./IntroCurtain";
 export * from "./ParallaxField";
 export * from "./ParallaxSection";
+export * from "./SectionStack";
+export * from "./DepthTunnel";
+export * from "./FunnelEntrance";

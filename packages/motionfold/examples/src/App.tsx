@@ -16,7 +16,12 @@ import {
   GlowBorder,
   CropFrame,
   ScrollCue,
+  ParallaxField,
+  ParallaxSection,
+  SectionStack,
+  useSectionTheme,
 } from "motionfold";
+import type { ParallaxFieldItem, ProgressLineVariant } from "motionfold";
 import { Demo, SampleCard, makeSlides } from "./sample";
 
 const sceneBg = { background: "linear-gradient(180deg, #141210, #0b0a09)" };
@@ -49,6 +54,12 @@ export function App() {
           <span className="group">WGB</span>
           <a href="#expanding">ExpandingHighlight</a>
           <a href="#curtain">IntroCurtain</a>
+          <span className="group">Floema</span>
+          <a href="#section-stack">SectionStack</a>
+          <a href="#parallax-field">ParallaxField</a>
+          <a href="#parallax-section">ParallaxSection</a>
+          <a href="#masked-rise">TextReveal (masked-rise)</a>
+          <a href="#section-theme">useSectionTheme</a>
           <span className="group">Surfaces</span>
           <a href="#glow">GlowBorder</a>
           <a href="#crop">CropFrame</a>
@@ -265,6 +276,125 @@ export function App() {
           </button>
         </Demo>
 
+        {/* ---- SectionStack ---- */}
+        <Demo
+          id="section-stack"
+          kicker="Floema"
+          title="SectionStack"
+          desc="Multi-section stacking scroll engine. Images cover each other like cards as you scroll. Content switches at the midpoint. Toggle the progress line style below."
+        >
+          <SectionStackDemo />
+        </Demo>
+
+        {/* ---- ParallaxField ---- */}
+        <Demo
+          id="parallax-field"
+          kicker="Floema"
+          title="ParallaxField"
+          desc="Scatters items across multiple depth layers. Each layer scrolls at a different speed, creating a multi-plane parallax constellation — the Floema hero pattern."
+        >
+          <div
+            className="stage"
+            style={{
+              minHeight: 500,
+              background: "#E8E2D9",
+              borderRadius: 16,
+              overflow: "hidden",
+              position: "relative",
+            }}
+          >
+            <ParallaxField
+              items={DEMO_FIELD_ITEMS}
+              layerSpeed={60}
+              scrollRange={[0, 1200]}
+              style={{ position: "absolute", inset: 0 }}
+            >
+              {(item) => (
+                <div
+                  style={{
+                    width: item.id === "f1" || item.id === "f6" || item.id === "f11" ? 90 : item.id === "f3" || item.id === "f8" ? 80 : 70,
+                    height: item.id === "f2" || item.id === "f7" || item.id === "f12" ? 90 : item.id === "f5" || item.id === "f10" ? 80 : 60,
+                    borderRadius: 8,
+                    background: FIELD_COLORS[Number(item.id.slice(1)) % FIELD_COLORS.length],
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                  }}
+                />
+              )}
+            </ParallaxField>
+            <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "center", height: 500 }}>
+              <h3 className="headline-xl" style={{ color: "#1A1A1A", fontSize: 36, fontStyle: "italic", textAlign: "center", maxWidth: 400 }}>
+                Spaces for people, made for life.
+              </h3>
+            </div>
+          </div>
+        </Demo>
+
+        {/* ---- ParallaxSection (stacked — Floema wipe) ---- */}
+        <Demo
+          id="parallax-section"
+          kicker="Floema"
+          title="ParallaxSection"
+          desc="Three stacked sections with parallax backgrounds that wipe into each other as you scroll — the cinematic Floema section transition. Each section pins at 100vh while its background pans, then the next section rises from below."
+        >
+          {PARALLAX_SECTIONS.map((s) => (
+            <ParallaxSection
+              key={s.num}
+              heightVh={200}
+              parallaxRange={["0%", "25%"]}
+              background={
+                <div style={{ width: "100%", height: "100%", background: s.gradient }} />
+              }
+            >
+              <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", padding: "clamp(24px,4vw,64px)" }}>
+                <div style={{ paddingTop: 40 }}>
+                  <span style={{ fontSize: 12, letterSpacing: "0.3em", color: "rgba(255,255,255,0.5)" }}>{s.num}</span>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginLeft: 16, padding: "6px 16px", borderRadius: 9999, background: s.badge, color: "#fff", fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                    {s.category}
+                  </div>
+                  <div style={{ marginTop: 8, fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>
+                    Made to Last
+                  </div>
+                </div>
+                <div style={{ maxWidth: 520, paddingBottom: 40 }}>
+                  <h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "clamp(28px,4vw,48px)", color: "#fff", lineHeight: 1.15, marginBottom: 24 }}>
+                    {s.headline}
+                  </h3>
+                  <button style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#fff", color: "#1A1A1A", border: "none", padding: "10px 20px", borderRadius: 8, fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", cursor: "pointer" }}>
+                    SEE {s.category.toUpperCase()} PRODUCTS →
+                  </button>
+                </div>
+              </div>
+            </ParallaxSection>
+          ))}
+        </Demo>
+
+        {/* ---- TextReveal masked-rise ---- */}
+        <Demo
+          id="masked-rise"
+          kicker="Floema"
+          title="TextReveal — masked-rise"
+          desc='The Floema signature text animation: each word slides up through its own overflow-hidden bounding box, creating a slot-reveal effect. Compare with the "blur-clip" variant above.'
+        >
+          <div className="stage stage--tall" style={{ flexDirection: "column", gap: 36 }}>
+            <TextReveal className="headline-xl" splitWords effect="masked-rise" stagger={0.04}>
+              Spaces for people, made for life.
+            </TextReveal>
+            <TextReveal as="p" className="headline-xl" style={{ fontSize: 24, opacity: 0.7 }} splitWords effect="masked-rise" stagger={0.02}>
+              Going beyond the expected is our calling.
+            </TextReveal>
+          </div>
+        </Demo>
+
+        {/* ---- useSectionTheme ---- */}
+        <Demo
+          id="section-theme"
+          kicker="Floema"
+          title="useSectionTheme"
+          desc="Scroll-position-based theme detection. Register sections with light/dark themes, and the hook returns whichever theme covers the viewport probe point. Watch the badge above change as you scroll between the light and dark blocks."
+        >
+          <SectionThemeDemo />
+        </Demo>
+
         {/* ---- GlowBorder ---- */}
         <Demo
           id="glow"
@@ -358,6 +488,171 @@ function OrbitDecor() {
             "polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%)",
         }}
       />
+    </div>
+  );
+}
+
+/* ---- SectionStack demo ---- */
+
+function SectionStackDemo() {
+  const [lineStyle, setLineStyle] = useState<ProgressLineVariant>("horizontal");
+
+  return (
+    <div>
+      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+        {(["horizontal", "vertical", "diagonal", "none"] as const).map((v) => (
+          <button
+            key={v}
+            className="pill"
+            onClick={() => setLineStyle(v)}
+            style={{
+              border: "none",
+              cursor: "pointer",
+              opacity: lineStyle === v ? 1 : 0.5,
+              fontWeight: lineStyle === v ? 700 : 400,
+            }}
+          >
+            {v}
+          </button>
+        ))}
+      </div>
+      <SectionStack
+        items={STACK_SECTIONS}
+        scrollVhPerSection={250}
+        progressLine={lineStyle}
+        stageStyle={{ borderRadius: 12 }}
+        renderBackground={(item) => (
+          <div style={{ width: "100%", height: "100%", background: item.gradient }} />
+        )}
+      >
+        {(item) => (
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", padding: "clamp(24px,4vw,48px)" }}>
+            <div style={{ paddingTop: 32 }}>
+              <span style={{ fontSize: 12, letterSpacing: "0.3em", color: "rgba(255,255,255,0.5)" }}>{item.num}</span>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginLeft: 16, padding: "6px 16px", borderRadius: 9999, background: item.badge, color: "#fff", fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                {item.label}
+              </div>
+            </div>
+            <div style={{ maxWidth: 480, paddingBottom: 24 }}>
+              <h3 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "clamp(24px,3.5vw,42px)", color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
+                {item.headline}
+              </h3>
+              <button style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#1A1A1A", border: "none", padding: "8px 18px", borderRadius: 8, fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", cursor: "pointer" }}>
+                Explore →
+              </button>
+            </div>
+          </div>
+        )}
+      </SectionStack>
+    </div>
+  );
+}
+
+const STACK_SECTIONS = [
+  { id: "s1", num: "01", label: "Urban", badge: "#C44B2B", headline: "Signage, furniture, and equipment for welcoming urban spaces", gradient: "linear-gradient(180deg, #2C3E50 0%, #34495E 20%, #2A3A4A 40%, #1F2D3A 60%, #1A252F 80%, #141D26 100%)" },
+  { id: "s2", num: "02", label: "Nature", badge: "#7A8B3C", headline: "Signage and equipment for all facets of the great outdoors", gradient: "linear-gradient(180deg, #3E5C3B 0%, #4A6B44 15%, #5C7A4C 35%, #4A6840 55%, #365A32 75%, #2D4A2C 100%)" },
+  { id: "s3", num: "03", label: "RePlastic", badge: "#3A7D5C", headline: "Custom projects and furniture crafted out of 100% recyclable plastic", gradient: "linear-gradient(180deg, #1F4037 0%, #245545 15%, #2C5A4A 35%, #234D3F 55%, #1B3D32 75%, #162D24 100%)" },
+];
+
+/* ---- Floema demo data ---- */
+
+const PARALLAX_SECTIONS = [
+  {
+    num: "01",
+    category: "Urban",
+    badge: "#C44B2B",
+    headline: "Signage, furniture, and equipment for welcoming urban spaces",
+    gradient: "linear-gradient(180deg, #2C3E50 0%, #34495E 20%, #2A3A4A 40%, #1F2D3A 60%, #1A252F 80%, #141D26 100%)",
+  },
+  {
+    num: "02",
+    category: "Nature",
+    badge: "#7A8B3C",
+    headline: "Signage and equipment for all facets of the great outdoors",
+    gradient: "linear-gradient(180deg, #3E5C3B 0%, #4A6B44 15%, #5C7A4C 35%, #4A6840 55%, #365A32 75%, #2D4A2C 100%)",
+  },
+  {
+    num: "03",
+    category: "RePlastic",
+    badge: "#3A7D5C",
+    headline: "Custom projects and furniture crafted out of 100% recyclable plastic",
+    gradient: "linear-gradient(180deg, #1F4037 0%, #245545 15%, #2C5A4A 35%, #234D3F 55%, #1B3D32 75%, #162D24 100%)",
+  },
+];
+
+const FIELD_COLORS = [
+  "linear-gradient(135deg, #C4A882, #8B7355)",
+  "linear-gradient(135deg, #6B8E5A, #4A6B3A)",
+  "linear-gradient(135deg, #8B6E4E, #5C4833)",
+  "linear-gradient(135deg, #A0522D, #6B3A1F)",
+  "linear-gradient(135deg, #556B2F, #3B4A1F)",
+  "linear-gradient(135deg, #4A6B8B, #2C4A5C)",
+];
+
+const DEMO_FIELD_ITEMS: (ParallaxFieldItem & { id: string })[] = [
+  { id: "f1", x: 8, y: 12, layer: 0 },
+  { id: "f2", x: 82, y: 8, layer: 1 },
+  { id: "f3", x: 18, y: 55, layer: 2 },
+  { id: "f4", x: 72, y: 42, layer: 1 },
+  { id: "f5", x: 42, y: 6, layer: 3 },
+  { id: "f6", x: 28, y: 72, layer: 0 },
+  { id: "f7", x: 62, y: 68, layer: 2 },
+  { id: "f8", x: 90, y: 52, layer: 3 },
+  { id: "f9", x: 6, y: 35, layer: 1 },
+  { id: "f10", x: 52, y: 32, layer: 0 },
+  { id: "f11", x: 22, y: 22, layer: 3 },
+  { id: "f12", x: 75, y: 78, layer: 2 },
+];
+
+function SectionThemeDemo() {
+  const { theme, registerSection } = useSectionTheme<"dark" | "light">("dark");
+  return (
+    <div style={{ position: "relative" }}>
+      <div
+        style={{
+          position: "sticky",
+          top: 12,
+          zIndex: 10,
+          display: "flex",
+          justifyContent: "center",
+          pointerEvents: "none",
+        }}
+      >
+        <div
+          style={{
+            padding: "8px 20px",
+            borderRadius: 9999,
+            fontSize: 13,
+            fontWeight: 600,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            transition: "all 0.3s ease",
+            background: theme === "light" ? "#fff" : "#1A1A1A",
+            color: theme === "light" ? "#1A1A1A" : "#fff",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+          }}
+        >
+          theme: {theme}
+        </div>
+      </div>
+      <div
+        ref={(el) => registerSection("theme-dark-1", el, "dark")}
+        style={{ height: 300, background: "#E8E2D9", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 12, margin: "16px 0" }}
+      >
+        <span style={{ fontSize: 20, fontWeight: 600, color: "#1A1A1A" }}>Light section → dark nav text</span>
+      </div>
+      <div
+        ref={(el) => registerSection("theme-light-1", el, "light")}
+        style={{ height: 300, background: "linear-gradient(180deg, #2C3E50, #1A252F)", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 12, margin: "16px 0" }}
+      >
+        <span style={{ fontSize: 20, fontWeight: 600, color: "#fff" }}>Dark section → light nav text</span>
+      </div>
+      <div
+        ref={(el) => registerSection("theme-dark-2", el, "dark")}
+        style={{ height: 300, background: "#E8E2D9", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 12, margin: "16px 0" }}
+      >
+        <span style={{ fontSize: 20, fontWeight: 600, color: "#1A1A1A" }}>Light section again</span>
+      </div>
     </div>
   );
 }

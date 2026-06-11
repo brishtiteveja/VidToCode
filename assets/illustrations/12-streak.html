@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 — Streak (ধারাবাহিকতা)</title>
+<style>
+  body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #0F0F0F; color: #fff; }
+  h2 { margin-bottom: 4px; font-size: 22px; } .bangla { color: #888; margin-bottom: 30px; font-size: 16px; }
+  .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+  .card { border-radius: 20px; padding: 28px; display: flex; align-items: center; justify-content: center; width: 200px; height: 200px; }
+  .dark { background: #1A1A2E; } .light { background: #F5F0EB; }
+  .label { text-align: center; font-size: 12px; color: #666; margin-top: 8px; }
+  .nav { display: flex; gap: 12px; margin-top: 20px; } .nav a { color: #6366F1; text-decoration: none; font-size: 14px; }
+</style>
+</head>
+<body>
+<h2>12 — Streak</h2>
+<p class="bangla">ধারাবাহিকতা</p>
+<div class="cards">
+  <div>
+    <div class="card dark">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#E8924A"/>
+        <!-- Main flame -->
+        <path d="M100 30 Q130 70 125 110 Q120 145 100 160 Q80 145 75 110 Q70 70 100 30 Z" fill="#F4C542"/>
+        <!-- Inner flame -->
+        <path d="M100 60 Q118 85 115 115 Q112 140 100 150 Q88 140 85 115 Q82 85 100 60 Z" fill="#E85D4A"/>
+        <!-- Core flame -->
+        <path d="M100 90 Q110 105 108 125 Q106 140 100 145 Q94 140 92 125 Q90 105 100 90 Z" fill="#F5F0EB"/>
+        <!-- Flame highlight -->
+        <path d="M95 45 Q90 60 92 75" stroke="#F5F0EB" stroke-width="2" fill="none" opacity="0.4"/>
+        <!-- Day dots (week streak) -->
+        <circle cx="40" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="58" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="76" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="94" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="112" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="130" cy="172" r="7" fill="#F4C542"/>
+        <circle cx="148" cy="172" r="7" fill="#1A1A3E" opacity="0.3"/>
+        <!-- Checkmarks in completed days -->
+        <path d="M37 172 L39 175 L44 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M55 172 L57 175 L62 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M73 172 L75 175 L80 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M91 172 L93 175 L98 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M109 172 L111 175 L116 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <!-- Number in current day -->
+        <text x="130" y="176" text-anchor="middle" font-size="9" font-weight="900" fill="#1A1A3E" font-family="sans-serif">6</text>
+        <!-- Spark particles -->
+        <circle cx="65" cy="42" r="3" fill="#F4C542" opacity="0.5"/>
+        <circle cx="140" cy="50" r="4" fill="#F4C542" opacity="0.4"/>
+        <circle cx="50" cy="80" r="2" fill="#E85D4A" opacity="0.4"/>
+        <circle cx="152" cy="88" r="3" fill="#E85D4A" opacity="0.3"/>
+        <rect x="55" y="30" width="3" height="8" rx="1" fill="#F4C542" opacity="0.4"/>
+        <rect x="145" y="36" width="3" height="8" rx="1" fill="#F4C542" opacity="0.3"/>
+      </svg>
+    </div>
+    <p class="label">Dark card</p>
+  </div>
+  <div>
+    <div class="card light">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#E8924A"/>
+        <path d="M100 30 Q130 70 125 110 Q120 145 100 160 Q80 145 75 110 Q70 70 100 30 Z" fill="#F4C542"/>
+        <path d="M100 60 Q118 85 115 115 Q112 140 100 150 Q88 140 85 115 Q82 85 100 60 Z" fill="#E85D4A"/>
+        <path d="M100 90 Q110 105 108 125 Q106 140 100 145 Q94 140 92 125 Q90 105 100 90 Z" fill="#F5F0EB"/>
+        <path d="M95 45 Q90 60 92 75" stroke="#F5F0EB" stroke-width="2" fill="none" opacity="0.4"/>
+        <circle cx="40" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="58" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="76" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="94" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="112" cy="172" r="7" fill="#F5F0EB"/>
+        <circle cx="130" cy="172" r="7" fill="#F4C542"/>
+        <circle cx="148" cy="172" r="7" fill="#1A1A3E" opacity="0.3"/>
+        <path d="M37 172 L39 175 L44 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M55 172 L57 175 L62 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M73 172 L75 175 L80 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M91 172 L93 175 L98 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <path d="M109 172 L111 175 L116 169" stroke="#1B7A5A" stroke-width="2" stroke-linecap="round"/>
+        <text x="130" y="176" text-anchor="middle" font-size="9" font-weight="900" fill="#1A1A3E" font-family="sans-serif">6</text>
+        <circle cx="65" cy="42" r="3" fill="#F4C542" opacity="0.5"/>
+        <circle cx="140" cy="50" r="4" fill="#F4C542" opacity="0.4"/>
+        <circle cx="50" cy="80" r="2" fill="#E85D4A" opacity="0.4"/>
+        <circle cx="152" cy="88" r="3" fill="#E85D4A" opacity="0.3"/>
+        <rect x="55" y="30" width="3" height="8" rx="1" fill="#F4C542" opacity="0.4"/>
+        <rect x="145" y="36" width="3" height="8" rx="1" fill="#F4C542" opacity="0.3"/>
+      </svg>
+    </div>
+    <p class="label">Light card</p>
+  </div>
+</div>
+<p style="color:#666; font-size:13px; max-width:500px; text-align:center; line-height:1.6;">
+  <strong style="color:#aaa;">Elements:</strong> Orange circle bg. Three-layer flame (gold → coral → white core). 7-day streak dots at bottom with green checkmarks for completed days, current day highlighted in gold. Spark particles.
+</p>
+<div class="nav">
+  <a href="11-quiz.html">← Quiz</a>
+  <a href="13-progress.html">Progress →</a>
+</div>
+</body>
+</html>

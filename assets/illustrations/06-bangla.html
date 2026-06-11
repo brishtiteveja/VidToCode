@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>06 — Bangla (বাংলা)</title>
+<style>
+  body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #0F0F0F; color: #fff; }
+  h2 { margin-bottom: 4px; font-size: 22px; }
+  .bangla { color: #888; margin-bottom: 30px; font-size: 16px; }
+  .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+  .card { border-radius: 20px; padding: 28px; display: flex; align-items: center; justify-content: center; width: 200px; height: 200px; }
+  .dark { background: #1A1A2E; }
+  .light { background: #F5F0EB; }
+  .label { text-align: center; font-size: 12px; color: #666; margin-top: 8px; }
+  .nav { display: flex; gap: 12px; margin-top: 20px; }
+  .nav a { color: #6366F1; text-decoration: none; font-size: 14px; }
+</style>
+</head>
+<body>
+<h2>06 — Bangla</h2>
+<p class="bangla">বাংলা</p>
+<div class="cards">
+  <div>
+    <div class="card dark">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Bangladesh flag green -->
+        <circle cx="100" cy="100" r="88" fill="#006A4E"/>
+        <!-- Decorative arch (Shaheed Minar inspired geometry) -->
+        <rect x="88" y="30" width="24" height="100" rx="4" fill="#F5F0EB"/>
+        <rect x="60" y="50" width="16" height="80" rx="4" fill="#F5F0EB" opacity="0.7" transform="rotate(-8 68 90)"/>
+        <rect x="124" y="50" width="16" height="80" rx="4" fill="#F5F0EB" opacity="0.7" transform="rotate(8 132 90)"/>
+        <!-- Base platform -->
+        <rect x="44" y="128" width="112" height="12" rx="4" fill="#F5F0EB"/>
+        <rect x="54" y="138" width="92" height="8" rx="3" fill="#D4C5B5"/>
+        <!-- Red circle (flag reference) -->
+        <circle cx="100" cy="72" r="18" fill="#F42A41"/>
+        <!-- Bold Bangla letter অ -->
+        <text x="100" y="170" text-anchor="middle" font-size="28" font-weight="900" fill="#F4C542" font-family="sans-serif">অ আ ক</text>
+        <!-- Alpona-inspired corner decorations -->
+        <circle cx="32" cy="32" r="10" fill="#F42A41" opacity="0.3"/>
+        <circle cx="32" cy="32" r="5" fill="#F42A41" opacity="0.5"/>
+        <circle cx="168" cy="32" r="10" fill="#F4C542" opacity="0.3"/>
+        <circle cx="168" cy="32" r="5" fill="#F4C542" opacity="0.5"/>
+        <circle cx="32" cy="168" r="8" fill="#F4C542" opacity="0.3"/>
+        <circle cx="168" cy="168" r="8" fill="#F42A41" opacity="0.3"/>
+        <!-- Decorative dots (Alpona pattern) -->
+        <circle cx="50" cy="100" r="3" fill="#F5F0EB" opacity="0.4"/>
+        <circle cx="150" cy="100" r="3" fill="#F5F0EB" opacity="0.4"/>
+        <circle cx="40" cy="80" r="2" fill="#F4C542" opacity="0.3"/>
+        <circle cx="160" cy="80" r="2" fill="#F4C542" opacity="0.3"/>
+      </svg>
+    </div>
+    <p class="label">Dark card</p>
+  </div>
+  <div>
+    <div class="card light">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#006A4E"/>
+        <rect x="88" y="30" width="24" height="100" rx="4" fill="#F5F0EB"/>
+        <rect x="60" y="50" width="16" height="80" rx="4" fill="#F5F0EB" opacity="0.7" transform="rotate(-8 68 90)"/>
+        <rect x="124" y="50" width="16" height="80" rx="4" fill="#F5F0EB" opacity="0.7" transform="rotate(8 132 90)"/>
+        <rect x="44" y="128" width="112" height="12" rx="4" fill="#F5F0EB"/>
+        <rect x="54" y="138" width="92" height="8" rx="3" fill="#D4C5B5"/>
+        <circle cx="100" cy="72" r="18" fill="#F42A41"/>
+        <text x="100" y="170" text-anchor="middle" font-size="28" font-weight="900" fill="#F4C542" font-family="sans-serif">অ আ ক</text>
+        <circle cx="32" cy="32" r="10" fill="#F42A41" opacity="0.3"/>
+        <circle cx="32" cy="32" r="5" fill="#F42A41" opacity="0.5"/>
+        <circle cx="168" cy="32" r="10" fill="#F4C542" opacity="0.3"/>
+        <circle cx="168" cy="32" r="5" fill="#F4C542" opacity="0.5"/>
+        <circle cx="32" cy="168" r="8" fill="#F4C542" opacity="0.3"/>
+        <circle cx="168" cy="168" r="8" fill="#F42A41" opacity="0.3"/>
+        <circle cx="50" cy="100" r="3" fill="#F5F0EB" opacity="0.4"/>
+        <circle cx="150" cy="100" r="3" fill="#F5F0EB" opacity="0.4"/>
+        <circle cx="40" cy="80" r="2" fill="#F4C542" opacity="0.3"/>
+        <circle cx="160" cy="80" r="2" fill="#F4C542" opacity="0.3"/>
+      </svg>
+    </div>
+    <p class="label">Light card</p>
+  </div>
+</div>
+<p style="color:#666; font-size:13px; max-width:500px; text-align:center; line-height:1.6;">
+  <strong style="color:#aaa;">Elements:</strong> Bangladesh flag green bg (#006A4E). Shaheed Minar-inspired geometric pillars (3 columns on a platform). Red circle (flag motif). Bengali alphabet letters "অ আ ক" in gold. Alpona-style decorative corner dots (Bangladeshi floor art tradition).
+</p>
+<div class="nav">
+  <a href="05-english.html">← English</a>
+  <a href="07-ict.html">ICT →</a>
+</div>
+</body>
+</html>

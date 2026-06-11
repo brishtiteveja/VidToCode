@@ -19,9 +19,11 @@ import {
   ParallaxField,
   ParallaxSection,
   SectionStack,
+  DepthTunnel,
+  FunnelEntrance,
   useSectionTheme,
 } from "motionfold";
-import type { ParallaxFieldItem, ProgressLineVariant } from "motionfold";
+import type { ParallaxFieldItem, ProgressLineVariant, DepthTunnelItem, FunnelEntranceItem } from "motionfold";
 import { Demo, SampleCard, makeSlides } from "./sample";
 
 const sceneBg = { background: "linear-gradient(180deg, #141210, #0b0a09)" };
@@ -55,6 +57,8 @@ export function App() {
           <a href="#expanding">ExpandingHighlight</a>
           <a href="#curtain">IntroCurtain</a>
           <span className="group">Floema</span>
+          <a href="#depth-tunnel">DepthTunnel</a>
+          <a href="#funnel-entrance">FunnelEntrance</a>
           <a href="#section-stack">SectionStack</a>
           <a href="#parallax-field">ParallaxField</a>
           <a href="#parallax-section">ParallaxSection</a>
@@ -276,6 +280,71 @@ export function App() {
           </button>
         </Demo>
 
+        {/* ---- DepthTunnel ---- */}
+        <Demo
+          id="depth-tunnel"
+          kicker="Floema"
+          title="DepthTunnel"
+          desc="Continuous infinite stream from a central vanishing point. Items fly toward the viewer and loop — like flying through a starfield of product cards. Uses CSS perspective + translateZ for real 3D convergence."
+        >
+          <div
+            style={{
+              position: "relative",
+              height: 500,
+              background: "#E8E2D9",
+              borderRadius: 16,
+              overflow: "hidden",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <DepthTunnel
+              items={TUNNEL_ITEMS}
+              cycleDuration={6}
+              perspective={1000}
+              style={{ position: "absolute", inset: 0 }}
+            >
+              {(item) => (
+                <div
+                  style={{
+                    width: 70,
+                    height: 55,
+                    borderRadius: 8,
+                    background: FIELD_COLORS[(item as any).ci % FIELD_COLORS.length],
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                  }}
+                />
+              )}
+            </DepthTunnel>
+            <h3
+              className="headline-xl"
+              style={{
+                position: "relative",
+                zIndex: 1,
+                color: "#1A1A1A",
+                fontSize: 32,
+                fontStyle: "italic",
+                textAlign: "center",
+                maxWidth: 360,
+                pointerEvents: "none",
+              }}
+            >
+              Spaces for people, made for life.
+            </h3>
+          </div>
+        </Demo>
+
+        {/* ---- FunnelEntrance ---- */}
+        <Demo
+          id="funnel-entrance"
+          kicker="Floema"
+          title="FunnelEntrance"
+          desc="One-time warp arrival: items fly from a vanishing point and settle at their scattered positions. Deeper layers arrive later. Click replay to see it again."
+        >
+          <FunnelEntranceDemo />
+        </Demo>
+
         {/* ---- SectionStack ---- */}
         <Demo
           id="section-stack"
@@ -488,6 +557,93 @@ function OrbitDecor() {
             "polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%)",
         }}
       />
+    </div>
+  );
+}
+
+/* ---- Tunnel / Funnel demo data ---- */
+
+const TUNNEL_ITEMS: (DepthTunnelItem & { ci: number })[] = Array.from({ length: 16 }, (_, i) => ({
+  id: `t${i}`,
+  x: 8 + ((i * 37 + 13) % 84),
+  y: 6 + ((i * 29 + 7) % 88),
+  ci: i,
+}));
+
+const FUNNEL_ITEMS: (FunnelEntranceItem & { ci: number })[] = [
+  { id: "e1", x: 8, y: 15, layer: 0, ci: 0 },
+  { id: "e2", x: 82, y: 10, layer: 1, ci: 1 },
+  { id: "e3", x: 18, y: 55, layer: 2, ci: 2 },
+  { id: "e4", x: 72, y: 42, layer: 1, ci: 3 },
+  { id: "e5", x: 42, y: 8, layer: 3, ci: 4 },
+  { id: "e6", x: 28, y: 72, layer: 0, ci: 5 },
+  { id: "e7", x: 62, y: 68, layer: 2, ci: 0 },
+  { id: "e8", x: 90, y: 52, layer: 3, ci: 1 },
+  { id: "e9", x: 6, y: 35, layer: 1, ci: 2 },
+  { id: "e10", x: 52, y: 32, layer: 0, ci: 3 },
+  { id: "e11", x: 22, y: 22, layer: 3, ci: 4 },
+  { id: "e12", x: 75, y: 78, layer: 2, ci: 5 },
+];
+
+function FunnelEntranceDemo() {
+  const [key, setKey] = useState(0);
+  return (
+    <div>
+      <div
+        style={{
+          position: "relative",
+          height: 500,
+          background: "#E8E2D9",
+          borderRadius: 16,
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <FunnelEntrance
+          key={key}
+          items={FUNNEL_ITEMS}
+          duration={2}
+          delay={0.3}
+          perspective={1000}
+          style={{ position: "absolute", inset: 0 }}
+        >
+          {(item) => (
+            <div
+              style={{
+                width: 75,
+                height: 55,
+                borderRadius: 8,
+                background: FIELD_COLORS[item.ci % FIELD_COLORS.length],
+                boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+              }}
+            />
+          )}
+        </FunnelEntrance>
+        <h3
+          className="headline-xl"
+          style={{
+            position: "relative",
+            zIndex: 1,
+            color: "#1A1A1A",
+            fontSize: 32,
+            fontStyle: "italic",
+            textAlign: "center",
+            maxWidth: 360,
+            pointerEvents: "none",
+          }}
+        >
+          Warp arrival
+        </h3>
+      </div>
+      <button
+        className="pill"
+        style={{ marginTop: 16, border: "none", cursor: "pointer" }}
+        onClick={() => setKey((k) => k + 1)}
+      >
+        Replay entrance
+      </button>
     </div>
   );
 }

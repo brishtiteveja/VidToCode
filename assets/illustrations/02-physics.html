@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02 — Physics (পদার্থবিজ্ঞান)</title>
+<style>
+  body {
+    font-family: -apple-system, sans-serif;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100vh; margin: 0; background: #0F0F0F; color: #fff;
+  }
+  h2 { margin-bottom: 4px; font-size: 22px; }
+  .bangla { color: #888; margin-bottom: 30px; font-size: 16px; }
+  .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+  .card {
+    border-radius: 20px; padding: 28px; display: flex; align-items: center;
+    justify-content: center; width: 200px; height: 200px;
+  }
+  .dark { background: #1A1A2E; }
+  .light { background: #F5F0EB; }
+  .white { background: #FFFFFF; }
+  .label { text-align: center; font-size: 12px; color: #666; margin-top: 8px; }
+  .nav { display: flex; gap: 12px; margin-top: 20px; }
+  .nav a { color: #6366F1; text-decoration: none; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<h2>02 — Physics</h2>
+<p class="bangla">পদার্থবিজ্ঞান</p>
+
+<div class="cards">
+  <div>
+    <div class="card dark">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <circle cx="100" cy="100" r="88" fill="#0F172A"/>
+
+        <!-- Orbit rings -->
+        <ellipse cx="100" cy="100" rx="78" ry="30" stroke="#4A9FE8" stroke-width="2" opacity="0.4" transform="rotate(-30 100 100)"/>
+        <ellipse cx="100" cy="100" rx="78" ry="30" stroke="#E85D4A" stroke-width="2" opacity="0.4" transform="rotate(30 100 100)"/>
+        <ellipse cx="100" cy="100" rx="78" ry="30" stroke="#F4C542" stroke-width="2" opacity="0.4" transform="rotate(90 100 100)"/>
+
+        <!-- Nucleus -->
+        <circle cx="100" cy="100" r="18" fill="#4A9FE8"/>
+        <circle cx="100" cy="100" r="12" fill="#1A1A3E"/>
+        <circle cx="96" cy="96" r="6" fill="#E85D4A"/>
+        <circle cx="106" cy="102" r="5" fill="#F4C542"/>
+        <circle cx="98" cy="106" r="4" fill="#E85D4A" opacity="0.7"/>
+
+        <!-- Electrons -->
+        <circle cx="36" cy="66" r="6" fill="#F4C542"/>
+        <circle cx="34" cy="64" r="1.5" fill="#fff" opacity="0.8"/>
+        <circle cx="164" cy="134" r="6" fill="#F4C542"/>
+        <circle cx="162" cy="132" r="1.5" fill="#fff" opacity="0.8"/>
+        <circle cx="100" cy="22" r="6" fill="#E85D4A"/>
+        <circle cx="98" cy="20" r="1.5" fill="#fff" opacity="0.8"/>
+
+        <!-- Wave pattern at bottom -->
+        <path d="M24 162 Q42 148 60 162 Q78 176 96 162 Q114 148 132 162 Q150 176 168 162" stroke="#4A9FE8" stroke-width="3" fill="none" opacity="0.5"/>
+        <path d="M24 172 Q42 158 60 172 Q78 186 96 172 Q114 158 132 172 Q150 186 168 172" stroke="#4A9FE8" stroke-width="2" fill="none" opacity="0.25"/>
+
+        <!-- Energy sparks -->
+        <rect x="44" y="140" width="3" height="10" rx="1" fill="#F4C542" opacity="0.5" transform="rotate(-20 45 145)"/>
+        <rect x="150" y="50" width="3" height="10" rx="1" fill="#F4C542" opacity="0.5" transform="rotate(15 151 55)"/>
+        <rect x="56" y="38" width="2" height="8" rx="1" fill="#E85D4A" opacity="0.4" transform="rotate(-10 57 42)"/>
+      </svg>
+    </div>
+    <p class="label">Dark card</p>
+  </div>
+
+  <div>
+    <div class="card light">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#0F172A"/>
+        <ellipse cx="100" cy="100" rx="78" ry="30" stroke="#4A9FE8" stroke-width="2" opacity="0.4" transform="rotate(-30 100 100)"/>
+        <ellipse cx="100" cy="100" rx="78" ry="30" stroke="#E85D4A" stroke-width="2" opacity="0.4" transform="rotate(30 100 100)"/>
+        <ellipse cx="100" cy="100" rx="78" ry="30" stroke="#F4C542" stroke-width="2" opacity="0.4" transform="rotate(90 100 100)"/>
+        <circle cx="100" cy="100" r="18" fill="#4A9FE8"/>
+        <circle cx="100" cy="100" r="12" fill="#1A1A3E"/>
+        <circle cx="96" cy="96" r="6" fill="#E85D4A"/>
+        <circle cx="106" cy="102" r="5" fill="#F4C542"/>
+        <circle cx="98" cy="106" r="4" fill="#E85D4A" opacity="0.7"/>
+        <circle cx="36" cy="66" r="6" fill="#F4C542"/>
+        <circle cx="34" cy="64" r="1.5" fill="#fff" opacity="0.8"/>
+        <circle cx="164" cy="134" r="6" fill="#F4C542"/>
+        <circle cx="162" cy="132" r="1.5" fill="#fff" opacity="0.8"/>
+        <circle cx="100" cy="22" r="6" fill="#E85D4A"/>
+        <circle cx="98" cy="20" r="1.5" fill="#fff" opacity="0.8"/>
+        <path d="M24 162 Q42 148 60 162 Q78 176 96 162 Q114 148 132 162 Q150 176 168 162" stroke="#4A9FE8" stroke-width="3" fill="none" opacity="0.5"/>
+        <path d="M24 172 Q42 158 60 172 Q78 186 96 172 Q114 158 132 172 Q150 186 168 172" stroke="#4A9FE8" stroke-width="2" fill="none" opacity="0.25"/>
+        <rect x="44" y="140" width="3" height="10" rx="1" fill="#F4C542" opacity="0.5" transform="rotate(-20 45 145)"/>
+        <rect x="150" y="50" width="3" height="10" rx="1" fill="#F4C542" opacity="0.5" transform="rotate(15 151 55)"/>
+        <rect x="56" y="38" width="2" height="8" rx="1" fill="#E85D4A" opacity="0.4" transform="rotate(-10 57 42)"/>
+      </svg>
+    </div>
+    <p class="label">Light card</p>
+  </div>
+
+  <div>
+    <div class="card white">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#0F172A"/>
+        <ellipse cx="100" cy="100" rx="78" ry="30" stroke="#4A9FE8" stroke-width="2" opacity="0.4" transform="rotate(-30 100 100)"/>
+        <ellipse cx="100" cy="100" rx="78" ry="30" stroke="#E85D4A" stroke-width="2" opacity="0.4" transform="rotate(30 100 100)"/>
+        <ellipse cx="100" cy="100" rx="78" ry="30" stroke="#F4C542" stroke-width="2" opacity="0.4" transform="rotate(90 100 100)"/>
+        <circle cx="100" cy="100" r="18" fill="#4A9FE8"/>
+        <circle cx="100" cy="100" r="12" fill="#1A1A3E"/>
+        <circle cx="96" cy="96" r="6" fill="#E85D4A"/>
+        <circle cx="106" cy="102" r="5" fill="#F4C542"/>
+        <circle cx="98" cy="106" r="4" fill="#E85D4A" opacity="0.7"/>
+        <circle cx="36" cy="66" r="6" fill="#F4C542"/>
+        <circle cx="34" cy="64" r="1.5" fill="#fff" opacity="0.8"/>
+        <circle cx="164" cy="134" r="6" fill="#F4C542"/>
+        <circle cx="162" cy="132" r="1.5" fill="#fff" opacity="0.8"/>
+        <circle cx="100" cy="22" r="6" fill="#E85D4A"/>
+        <circle cx="98" cy="20" r="1.5" fill="#fff" opacity="0.8"/>
+        <path d="M24 162 Q42 148 60 162 Q78 176 96 162 Q114 148 132 162 Q150 176 168 162" stroke="#4A9FE8" stroke-width="3" fill="none" opacity="0.5"/>
+        <path d="M24 172 Q42 158 60 172 Q78 186 96 172 Q114 158 132 172 Q150 186 168 172" stroke="#4A9FE8" stroke-width="2" fill="none" opacity="0.25"/>
+        <rect x="44" y="140" width="3" height="10" rx="1" fill="#F4C542" opacity="0.5" transform="rotate(-20 45 145)"/>
+        <rect x="150" y="50" width="3" height="10" rx="1" fill="#F4C542" opacity="0.5" transform="rotate(15 151 55)"/>
+        <rect x="56" y="38" width="2" height="8" rx="1" fill="#E85D4A" opacity="0.4" transform="rotate(-10 57 42)"/>
+      </svg>
+    </div>
+    <p class="label">White card</p>
+  </div>
+</div>
+
+<p style="color:#666; font-size:13px; max-width:500px; text-align:center; line-height:1.6;">
+  <strong style="color:#aaa;">Elements:</strong> Deep navy circle bg. Atom with 3 colored orbit rings (blue, coral, gold) at different angles. Multi-colored nucleus (protons/neutrons). 3 orbiting electrons with highlight dots. Sine wave pattern at bottom. Energy spark accents.
+</p>
+
+<div class="nav">
+  <a href="01-math.html">← Math</a>
+  <a href="03-chemistry.html">Chemistry →</a>
+</div>
+
+</body>
+</html>

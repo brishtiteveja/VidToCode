@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 — Practice Mode (অনুশীলন)</title>
+<style>
+  body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #0F0F0F; color: #fff; }
+  h2 { margin-bottom: 4px; font-size: 22px; } .bangla { color: #888; margin-bottom: 30px; font-size: 16px; }
+  .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+  .card { border-radius: 20px; padding: 28px; display: flex; align-items: center; justify-content: center; width: 200px; height: 200px; }
+  .dark { background: #1A1A2E; } .light { background: #F5F0EB; }
+  .label { text-align: center; font-size: 12px; color: #666; margin-top: 8px; }
+  .nav { display: flex; gap: 12px; margin-top: 20px; } .nav a { color: #6366F1; text-decoration: none; font-size: 14px; }
+</style>
+</head>
+<body>
+<h2>10 — Practice Mode</h2>
+<p class="bangla">অনুশীলন</p>
+<div class="cards">
+  <div>
+    <div class="card dark">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#E85D4A"/>
+        <!-- Target rings -->
+        <circle cx="100" cy="95" r="60" fill="#F5F0EB"/>
+        <circle cx="100" cy="95" r="48" fill="#E85D4A" opacity="0.2"/>
+        <circle cx="100" cy="95" r="36" fill="#F5F0EB"/>
+        <circle cx="100" cy="95" r="24" fill="#E85D4A" opacity="0.2"/>
+        <circle cx="100" cy="95" r="12" fill="#F4C542"/>
+        <!-- Bullseye dot -->
+        <circle cx="100" cy="95" r="4" fill="#1A1A3E"/>
+        <!-- Arrow -->
+        <line x1="145" y1="50" x2="104" y2="91" stroke="#1A1A3E" stroke-width="3" stroke-linecap="round"/>
+        <!-- Arrow head -->
+        <polygon points="100,91 108,85 106,95" fill="#1A1A3E"/>
+        <!-- Arrow tail feathers -->
+        <rect x="144" y="42" width="14" height="5" rx="2" fill="#1B7A5A" transform="rotate(10 151 44)"/>
+        <rect x="148" y="48" width="14" height="5" rx="2" fill="#4A9FE8" transform="rotate(-10 155 50)"/>
+        <!-- Checkmarks floating -->
+        <path d="M38 148 L44 156 L56 140" stroke="#F5F0EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M140 150 L146 158 L158 142" stroke="#F4C542" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Star burst -->
+        <circle cx="46" cy="52" r="8" fill="#F4C542" opacity="0.5"/>
+        <circle cx="46" cy="52" r="4" fill="#F4C542"/>
+        <circle cx="158" cy="120" r="6" fill="#F5F0EB" opacity="0.4"/>
+      </svg>
+    </div>
+    <p class="label">Dark card</p>
+  </div>
+  <div>
+    <div class="card light">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#E85D4A"/>
+        <circle cx="100" cy="95" r="60" fill="#F5F0EB"/>
+        <circle cx="100" cy="95" r="48" fill="#E85D4A" opacity="0.2"/>
+        <circle cx="100" cy="95" r="36" fill="#F5F0EB"/>
+        <circle cx="100" cy="95" r="24" fill="#E85D4A" opacity="0.2"/>
+        <circle cx="100" cy="95" r="12" fill="#F4C542"/>
+        <circle cx="100" cy="95" r="4" fill="#1A1A3E"/>
+        <line x1="145" y1="50" x2="104" y2="91" stroke="#1A1A3E" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="100,91 108,85 106,95" fill="#1A1A3E"/>
+        <rect x="144" y="42" width="14" height="5" rx="2" fill="#1B7A5A" transform="rotate(10 151 44)"/>
+        <rect x="148" y="48" width="14" height="5" rx="2" fill="#4A9FE8" transform="rotate(-10 155 50)"/>
+        <path d="M38 148 L44 156 L56 140" stroke="#F5F0EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M140 150 L146 158 L158 142" stroke="#F4C542" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="46" cy="52" r="8" fill="#F4C542" opacity="0.5"/>
+        <circle cx="46" cy="52" r="4" fill="#F4C542"/>
+        <circle cx="158" cy="120" r="6" fill="#F5F0EB" opacity="0.4"/>
+      </svg>
+    </div>
+    <p class="label">Light card</p>
+  </div>
+</div>
+<p style="color:#666; font-size:13px; max-width:500px; text-align:center; line-height:1.6;">
+  <strong style="color:#aaa;">Elements:</strong> Coral circle bg. Bullseye target with gold center. Arrow hitting center. Checkmark accents. Star bursts.
+</p>
+<div class="nav">
+  <a href="09-ai-tutor.html">← AI Tutor</a>
+  <a href="11-quiz.html">Quiz →</a>
+</div>
+</body>
+</html>

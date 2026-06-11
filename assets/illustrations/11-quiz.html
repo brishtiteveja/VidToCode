@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11 — Quiz (কুইজ)</title>
+<style>
+  body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #0F0F0F; color: #fff; }
+  h2 { margin-bottom: 4px; font-size: 22px; } .bangla { color: #888; margin-bottom: 30px; font-size: 16px; }
+  .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+  .card { border-radius: 20px; padding: 28px; display: flex; align-items: center; justify-content: center; width: 200px; height: 200px; }
+  .dark { background: #1A1A2E; } .light { background: #F5F0EB; }
+  .label { text-align: center; font-size: 12px; color: #666; margin-top: 8px; }
+  .nav { display: flex; gap: 12px; margin-top: 20px; } .nav a { color: #6366F1; text-decoration: none; font-size: 14px; }
+</style>
+</head>
+<body>
+<h2>11 — Quiz</h2>
+<p class="bangla">কুইজ</p>
+<div class="cards">
+  <div>
+    <div class="card dark">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#F4C542"/>
+        <!-- Clipboard -->
+        <rect x="48" y="38" width="104" height="140" rx="10" fill="#F5F0EB"/>
+        <!-- Clip -->
+        <rect x="78" y="28" width="44" height="20" rx="6" fill="#D4C5B5"/>
+        <rect x="88" y="24" width="24" height="12" rx="6" fill="#1A1A3E"/>
+        <!-- Question lines -->
+        <rect x="62" y="58" width="76" height="4" rx="2" fill="#1A1A3E" opacity="0.2"/>
+        <rect x="62" y="68" width="52" height="4" rx="2" fill="#1A1A3E" opacity="0.15"/>
+        <!-- Option A — correct -->
+        <rect x="62" y="84" width="76" height="22" rx="6" fill="#1B7A5A" opacity="0.15"/>
+        <circle cx="74" cy="95" r="6" fill="#1B7A5A"/>
+        <path d="M71 95 L73 98 L78 91" stroke="#F5F0EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="84" y="92" width="40" height="4" rx="2" fill="#1A1A3E" opacity="0.25"/>
+        <!-- Option B -->
+        <rect x="62" y="112" width="76" height="22" rx="6" fill="#E85D4A" opacity="0.1"/>
+        <circle cx="74" cy="123" r="6" fill="#E85D4A" opacity="0.3"/>
+        <rect x="84" y="120" width="36" height="4" rx="2" fill="#1A1A3E" opacity="0.15"/>
+        <!-- Option C -->
+        <rect x="62" y="140" width="76" height="22" rx="6" fill="#1A1A3E" opacity="0.05"/>
+        <circle cx="74" cy="151" r="6" fill="#1A1A3E" opacity="0.15"/>
+        <rect x="84" y="148" width="44" height="4" rx="2" fill="#1A1A3E" opacity="0.12"/>
+        <!-- Big question mark -->
+        <text x="160" y="58" font-size="36" font-weight="900" fill="#1A1A3E" opacity="0.15" font-family="Georgia, serif">?</text>
+        <!-- Floating checkmark -->
+        <circle cx="164" cy="82" r="12" fill="#1B7A5A"/>
+        <path d="M158 82 L162 87 L171 76" stroke="#F5F0EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Score badge -->
+        <circle cx="38" cy="50" r="14" fill="#E85D4A"/>
+        <text x="38" y="55" text-anchor="middle" font-size="12" font-weight="900" fill="#F5F0EB" font-family="sans-serif">A+</text>
+      </svg>
+    </div>
+    <p class="label">Dark card</p>
+  </div>
+  <div>
+    <div class="card light">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="88" fill="#F4C542"/>
+        <rect x="48" y="38" width="104" height="140" rx="10" fill="#F5F0EB"/>
+        <rect x="78" y="28" width="44" height="20" rx="6" fill="#D4C5B5"/>
+        <rect x="88" y="24" width="24" height="12" rx="6" fill="#1A1A3E"/>
+        <rect x="62" y="58" width="76" height="4" rx="2" fill="#1A1A3E" opacity="0.2"/>
+        <rect x="62" y="68" width="52" height="4" rx="2" fill="#1A1A3E" opacity="0.15"/>
+        <rect x="62" y="84" width="76" height="22" rx="6" fill="#1B7A5A" opacity="0.15"/>
+        <circle cx="74" cy="95" r="6" fill="#1B7A5A"/>
+        <path d="M71 95 L73 98 L78 91" stroke="#F5F0EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="84" y="92" width="40" height="4" rx="2" fill="#1A1A3E" opacity="0.25"/>
+        <rect x="62" y="112" width="76" height="22" rx="6" fill="#E85D4A" opacity="0.1"/>
+        <circle cx="74" cy="123" r="6" fill="#E85D4A" opacity="0.3"/>
+        <rect x="84" y="120" width="36" height="4" rx="2" fill="#1A1A3E" opacity="0.15"/>
+        <rect x="62" y="140" width="76" height="22" rx="6" fill="#1A1A3E" opacity="0.05"/>
+        <circle cx="74" cy="151" r="6" fill="#1A1A3E" opacity="0.15"/>
+        <rect x="84" y="148" width="44" height="4" rx="2" fill="#1A1A3E" opacity="0.12"/>
+        <text x="160" y="58" font-size="36" font-weight="900" fill="#1A1A3E" opacity="0.15" font-family="Georgia, serif">?</text>
+        <circle cx="164" cy="82" r="12" fill="#1B7A5A"/>
+        <path d="M158 82 L162 87 L171 76" stroke="#F5F0EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="38" cy="50" r="14" fill="#E85D4A"/>
+        <text x="38" y="55" text-anchor="middle" font-size="12" font-weight="900" fill="#F5F0EB" font-family="sans-serif">A+</text>
+      </svg>
+    </div>
+    <p class="label">Light card</p>
+  </div>
+</div>
+<p style="color:#666; font-size:13px; max-width:500px; text-align:center; line-height:1.6;">
+  <strong style="color:#aaa;">Elements:</strong> Gold circle bg. Clipboard with multiple-choice options (correct one highlighted in green with checkmark). A+ score badge. Floating check circle. Faint question mark.
+</p>
+<div class="nav">
+  <a href="10-practice.html">← Practice</a>
+  <a href="12-streak.html">Streak →</a>
+</div>
+</body>
+</html>

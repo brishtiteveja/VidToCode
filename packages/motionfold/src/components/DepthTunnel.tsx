@@ -34,6 +34,11 @@ export interface DepthTunnelProps<T extends DepthTunnelItem = DepthTunnelItem> {
   scaleEnd?: number;
   /** CSS perspective on the container in px. Default `1200`. */
   perspective?: number;
+  /**
+   * Start with the stream already mid-flight (negative animation delays)
+   * instead of building up over the first cycle. Default `false`.
+   */
+  prefill?: boolean;
   /** Render each item. */
   children: (item: T, index: number) => ReactNode;
   className?: string;
@@ -61,6 +66,7 @@ export function DepthTunnel<T extends DepthTunnelItem = DepthTunnelItem>({
   scaleStart = 0.04,
   scaleEnd = 1.35,
   perspective = 1200,
+  prefill = false,
   children,
   className,
   style,
@@ -95,7 +101,7 @@ export function DepthTunnel<T extends DepthTunnelItem = DepthTunnelItem>({
         }}
       >
         {items.map((item, i) => {
-          const delay = (i / items.length) * cycleDuration;
+          const delay = (i / items.length) * cycleDuration - (prefill ? cycleDuration : 0);
           return (
             <div
               key={item.id}

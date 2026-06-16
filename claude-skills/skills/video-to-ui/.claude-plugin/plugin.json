@@ -1,0 +1,8 @@
+{
+  "name": "video-to-ui",
+  "description": "Turn a UI screen recording into frames, a design-system report, code edits against your files, or a runnable Vite + React + TypeScript + Tailwind scaffold.",
+  "version": "0.1.0",
+  "author": "mmohajer9 <mmohajer98@gmail.com>",
+  "homepage": "https://github.com/mmohajer9/video-to-ui",
+  "license": "MIT"
+}

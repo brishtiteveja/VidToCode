@@ -28,6 +28,293 @@ import { Demo, SampleCard, makeSlides } from "./sample";
 
 const sceneBg = { background: "linear-gradient(180deg, #141210, #0b0a09)" };
 
+/* ---- Dikkha দী Owl Logo (inline SVG) ---- */
+function DiOwlLogo({ size = 160 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="88" fill="#4F46E5" />
+      <path d="M55 85 Q55 155 100 165 Q145 155 145 85 Q145 55 100 45 Q55 55 55 85 Z" fill="#F5F0EB" />
+      <polygon points="65,58 74,36 83,58" fill="#F5F0EB" />
+      <polygon points="117,58 126,36 135,58" fill="#F5F0EB" />
+      <circle cx="80" cy="82" r="20" fill="#4F46E5" />
+      <circle cx="120" cy="82" r="20" fill="#4F46E5" />
+      <circle cx="80" cy="82" r="14" stroke="#06B6D4" strokeWidth="2.5" fill="none" />
+      <circle cx="120" cy="82" r="14" stroke="#06B6D4" strokeWidth="2.5" fill="none" />
+      <circle cx="80" cy="82" r="7" fill="#06B6D4" />
+      <circle cx="120" cy="82" r="7" fill="#06B6D4" />
+      <circle cx="77" cy="79" r="2.5" fill="#F5F0EB" opacity="0.8" />
+      <circle cx="117" cy="79" r="2.5" fill="#F5F0EB" opacity="0.8" />
+      <polygon points="100,98 93,110 107,110" fill="#F4C542" />
+      <text x="100" y="148" textAnchor="middle" fontSize="38" fontWeight="900" fill="#4F46E5" fontFamily="sans-serif" opacity="0.85">দী</text>
+      <line x1="55" y1="75" x2="35" y2="75" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="35" y1="75" x2="35" y2="55" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="35" cy="51" r="4" fill="#06B6D4" />
+      <line x1="145" y1="75" x2="165" y2="75" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="165" y1="75" x2="165" y2="55" stroke="#06B6D4" strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="165" cy="51" r="4" fill="#06B6D4" />
+      <line x1="100" y1="165" x2="100" y2="180" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="100" cy="184" r="3" fill="#06B6D4" />
+      <circle cx="100" cy="28" r="5" fill="#F4C542" />
+      <path d="M60 115 L70 125 L60 135" stroke="#D4C5B5" strokeWidth="2" fill="none" opacity="0.35" />
+      <path d="M140 115 L130 125 L140 135" stroke="#D4C5B5" strokeWidth="2" fill="none" opacity="0.35" />
+    </svg>
+  );
+}
+
+/* ---- Subject illustration mini-cards for tunnel ---- */
+const SUBJECT_COLORS = ["#1A1A3E", "#0F172A", "#1B7A5A", "#2D6B4F", "#7C5CBF", "#006A4E", "#1A1A3E", "#E8924A", "#6366F1"];
+const SUBJECT_LABELS = ["গণিত", "পদার্থ", "রসায়ন", "জীব", "ইংরেজি", "বাংলা", "ICT", "সাধারণ জ্ঞান", "AI"];
+const SUBJECT_ICONS = ["π", "⚛", "⚗", "🧬", "Aa", "অ", "{ }", "?", "◎"];
+
+const DIKKHA_TUNNEL_ITEMS: (DepthTunnelItem & { ci: number })[] = Array.from({ length: 18 }, (_, i) => ({
+  id: `d${i}`,
+  x: 10 + ((i * 31 + 17) % 80),
+  y: 8 + ((i * 23 + 11) % 84),
+  ci: i % 9,
+}));
+
+function DikkhaSplashDemo() {
+  const [splashKey, setSplashKey] = useState(0);
+  return (
+    <div>
+      <div
+        key={splashKey}
+        style={{
+          position: "relative",
+          height: "100vh",
+          overflow: "hidden",
+          borderRadius: 16,
+          background: "linear-gradient(180deg, #09090B 0%, #0F0D2E 50%, #09090B 100%)",
+        }}
+      >
+        <IntroCurtain
+          curtainColor="#09090B"
+          hold={2}
+          duration={1.2}
+          exit="fade"
+          message={
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+              <GlowBorder
+                colors={["#4F46E5", "#06B6D4", "#F4C542", "#4F46E5"]}
+                blur={60}
+                duration={4}
+                opacity={0.7}
+                borderRadius={9999}
+                inset={32}
+              >
+                <div style={{
+                  width: 140,
+                  height: 140,
+                  borderRadius: 9999,
+                  background: "#09090B",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}>
+                  <DiOwlLogo size={120} />
+                </div>
+              </GlowBorder>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 36, fontWeight: 900, letterSpacing: "0.04em" }}>
+                  দীক্ষা
+                </div>
+                <div style={{ fontSize: 13, opacity: 0.5, marginTop: 4, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                  AI-Powered Learning
+                </div>
+              </div>
+            </div>
+          }
+        >
+          {/* After curtain lifts: DepthTunnel with subject cards */}
+          <div style={{
+            position: "relative",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+            {/* Tunnel fills the background */}
+            <DepthTunnel
+              items={DIKKHA_TUNNEL_ITEMS}
+              cycleDuration={10}
+              depthStart={4000}
+              depthEnd={400}
+              scaleStart={0.03}
+              scaleEnd={1.5}
+              perspective={1000}
+              prefill
+              style={{ position: "absolute", inset: 0 }}
+            >
+              {(item) => (
+                <div style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 16,
+                  background: SUBJECT_COLORS[(item as any).ci],
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 4,
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}>
+                  <span style={{ fontSize: 24 }}>{SUBJECT_ICONS[(item as any).ci]}</span>
+                  <span style={{ fontSize: 9, opacity: 0.7, fontWeight: 600 }}>
+                    {SUBJECT_LABELS[(item as any).ci]}
+                  </span>
+                </div>
+              )}
+            </DepthTunnel>
+
+            {/* Centered logo overlay */}
+            <div style={{
+              position: "relative",
+              zIndex: 10,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 20,
+            }}>
+              <GlowBorder
+                colors={["#4F46E5", "#06B6D4", "#F4C542", "#06B6D4", "#4F46E5"]}
+                blur={80}
+                duration={5}
+                opacity={0.6}
+                borderRadius={9999}
+                inset={40}
+              >
+                <div style={{
+                  width: 180,
+                  height: 180,
+                  borderRadius: 9999,
+                  background: "radial-gradient(circle, #0F0D2E 60%, #09090B 100%)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 0 60px rgba(79,70,229,0.3), inset 0 0 30px rgba(6,182,212,0.1)",
+                }}>
+                  <DiOwlLogo size={150} />
+                </div>
+              </GlowBorder>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                style={{ textAlign: "center" }}
+              >
+                <h1 style={{
+                  fontSize: 42,
+                  fontWeight: 900,
+                  letterSpacing: "0.02em",
+                  margin: 0,
+                  background: "linear-gradient(135deg, #F5F0EB 0%, #06B6D4 50%, #F4C542 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}>
+                  দীক্ষা
+                </h1>
+                <p style={{
+                  fontSize: 15,
+                  opacity: 0.5,
+                  margin: "6px 0 0",
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  fontWeight: 500,
+                }}>
+                  Your AI Tutor for Bangladesh
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+              >
+                <button style={{
+                  padding: "14px 48px",
+                  borderRadius: 9999,
+                  border: "none",
+                  background: "linear-gradient(135deg, #4F46E5, #06B6D4)",
+                  color: "#fff",
+                  fontSize: 16,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  boxShadow: "0 4px 24px rgba(79,70,229,0.4)",
+                  letterSpacing: "0.04em",
+                }}>
+                  শুরু করি →
+                </button>
+              </motion.div>
+            </div>
+
+            {/* Curved path SVG decorative overlay */}
+            <svg
+              viewBox="0 0 800 600"
+              fill="none"
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                pointerEvents: "none",
+                opacity: 0.12,
+              }}
+            >
+              <path
+                d="M0 300 Q200 100 400 300 Q600 500 800 300"
+                stroke="#06B6D4"
+                strokeWidth="2"
+                fill="none"
+              >
+                <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
+                  M0 300 Q200 100 400 300 Q600 500 800 300;
+                  M0 300 Q200 500 400 300 Q600 100 800 300;
+                  M0 300 Q200 100 400 300 Q600 500 800 300
+                " />
+              </path>
+              <path
+                d="M0 350 Q200 150 400 350 Q600 550 800 350"
+                stroke="#4F46E5"
+                strokeWidth="1.5"
+                fill="none"
+              >
+                <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
+                  M0 350 Q200 550 400 350 Q600 150 800 350;
+                  M0 350 Q200 150 400 350 Q600 550 800 350;
+                  M0 350 Q200 550 400 350 Q600 150 800 350
+                " />
+              </path>
+              <path
+                d="M0 250 Q200 450 400 250 Q600 50 800 250"
+                stroke="#F4C542"
+                strokeWidth="1"
+                fill="none"
+                opacity="0.6"
+              >
+                <animate attributeName="d" dur="12s" repeatCount="indefinite" values="
+                  M0 250 Q200 50 400 250 Q600 450 800 250;
+                  M0 250 Q200 450 400 250 Q600 50 800 250;
+                  M0 250 Q200 50 400 250 Q600 450 800 250
+                " />
+              </path>
+            </svg>
+          </div>
+        </IntroCurtain>
+      </div>
+      <button
+        className="pill"
+        style={{ marginTop: 18, border: "none", cursor: "pointer" }}
+        onClick={() => setSplashKey((k) => k + 1)}
+      >
+        Replay splash
+      </button>
+    </div>
+  );
+}
+
 export function App() {
   const [introKey, setIntroKey] = useState(0);
   const [curtainKey, setCurtainKey] = useState(0);
@@ -40,6 +327,8 @@ export function App() {
           <small>Examples</small>
         </div>
         <nav className="nav">
+          <span className="group">Dikkha</span>
+          <a href="#dikkha-splash">Splash Screen</a>
           <span className="group">Intro</span>
           <a href="#vector-build">VectorBuildIntro</a>
           <span className="group">Primitives</span>
@@ -72,6 +361,16 @@ export function App() {
       </aside>
 
       <main className="main">
+        {/* ---- Dikkha Splash Screen ---- */}
+        <Demo
+          id="dikkha-splash"
+          kicker="Dikkha"
+          title="Splash Screen"
+          desc="IntroCurtain reveals দী Owl logo with GlowBorder, then DepthTunnel streams subject cards from a vanishing point while animated SVG curves breathe behind."
+        >
+          <DikkhaSplashDemo />
+        </Demo>
+
         {/* ---- VectorBuildIntro ---- */}
         <Demo
           id="vector-build"
